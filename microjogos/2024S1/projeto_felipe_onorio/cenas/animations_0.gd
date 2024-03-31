@@ -1,11 +1,10 @@
-extends AudioStreamPlayer
+extends AnimatedSprite2D
 
-# dependencies:
-# none
+signal animations_0_ready
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	play()
+	animations_0_ready.emit(self)
 	pass # Replace with function body.
 
 

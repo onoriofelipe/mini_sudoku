@@ -1,11 +1,13 @@
-[gd_scene load_steps=12 format=3 uid="uid://bi0ahd7cv37i6"]
+[gd_scene load_steps=14 format=3 uid="uid://bi0ahd7cv37i6"]
 
 [ext_resource type="Script" path="res://microjogos/2024S1/projeto_felipe_onorio/cenas/main.gd" id="1_1yj3m"]
 [ext_resource type="Script" path="res://microjogos/2024S1/projeto_felipe_onorio/cenas/Control.gd" id="1_8ao43"]
+[ext_resource type="Script" path="res://microjogos/2024S1/projeto_felipe_onorio/cenas/composer.gd" id="2_ch7fa"]
 [ext_resource type="Script" path="res://microjogos/2024S1/projeto_felipe_onorio/cenas/cursor_area.gd" id="3_lmjue"]
 [ext_resource type="Script" path="res://microjogos/2024S1/projeto_felipe_onorio/cenas/area_cell_0.gd" id="5_n4jon"]
 [ext_resource type="Script" path="res://microjogos/2024S1/projeto_felipe_onorio/cenas/status_checker.gd" id="5_vfi3m"]
 [ext_resource type="Texture2D" uid="uid://ssb2yyob2j30" path="res://microjogos/2024S1/projeto_felipe_onorio/recursos/cobblestone_path.jpg" id="6_oscpn"]
+[ext_resource type="Script" path="res://microjogos/2024S1/projeto_felipe_onorio/cenas/animations_0.gd" id="7_0sbio"]
 [ext_resource type="Texture2D" uid="uid://csfuxrvj5bd5c" path="res://microjogos/2024S1/projeto_felipe_onorio/recursos/titulo.png" id="7_kmapp"]
 [ext_resource type="Texture2D" uid="uid://bn7wtjhmwxbby" path="res://microjogos/2024S1/projeto_felipe_onorio/recursos/instructions.png" id="8_mf117"]
 [ext_resource type="SpriteFrames" uid="uid://dekn22av8ml3j" path="res://microjogos/2024S1/projeto_felipe_onorio/cenas/flame_pixely.tres" id="9_n55ik"]
@@ -15,6 +17,9 @@
 [node name="Main" type="Node2D" node_paths=PackedStringArray("status_checker")]
 script = ExtResource("1_1yj3m")
 status_checker = NodePath("status_checker")
+
+[node name="composer" type="Node" parent="."]
+script = ExtResource("2_ch7fa")
 
 [node name="background" type="Sprite2D" parent="."]
 position = Vector2(954.656, 629.811)
@@ -49,10 +54,11 @@ state = 1
 
 [node name="Cell_0_hitbox" type="CollisionShape2D" parent="area_cell_0"]
 
-[node name="animations" type="AnimatedSprite2D" parent="area_cell_0/Cell_0_hitbox"]
+[node name="animations_0" type="AnimatedSprite2D" parent="area_cell_0/Cell_0_hitbox"]
 position = Vector2(-2, -5)
 scale = Vector2(5, 5)
 speed_scale = 4.0
+script = ExtResource("7_0sbio")
 
 [node name="area_cell_1" type="Area2D" parent="." node_paths=PackedStringArray("right_neighbor", "left_neighbor", "down_neighbor")]
 position = Vector2(915, 421)
@@ -66,10 +72,11 @@ state = 2
 
 [node name="Cell_0_hitbox" type="CollisionShape2D" parent="area_cell_1"]
 
-[node name="animations" type="AnimatedSprite2D" parent="area_cell_1/Cell_0_hitbox"]
+[node name="animations_1" type="AnimatedSprite2D" parent="area_cell_1/Cell_0_hitbox"]
 position = Vector2(1.99999, -2.00001)
 scale = Vector2(5, 5)
 speed_scale = 4.0
+script = ExtResource("7_0sbio")
 
 [node name="area_cell_2" type="Area2D" parent="." node_paths=PackedStringArray("left_neighbor", "down_neighbor")]
 position = Vector2(1097, 421)
@@ -81,10 +88,11 @@ column = 2
 
 [node name="Cell_0_hitbox" type="CollisionShape2D" parent="area_cell_2"]
 
-[node name="animations" type="AnimatedSprite2D" parent="area_cell_2/Cell_0_hitbox"]
+[node name="animations_2" type="AnimatedSprite2D" parent="area_cell_2/Cell_0_hitbox"]
 position = Vector2(-1.52588e-05, -1.90735e-06)
 scale = Vector2(5, 5)
 speed_scale = 4.0
+script = ExtResource("7_0sbio")
 
 [node name="area_cell_3" type="Area2D" parent="." node_paths=PackedStringArray("right_neighbor", "up_neighbor", "down_neighbor")]
 position = Vector2(726, 613)
@@ -97,10 +105,11 @@ column = 0
 
 [node name="Cell_0_hitbox" type="CollisionShape2D" parent="area_cell_3"]
 
-[node name="animations" type="AnimatedSprite2D" parent="area_cell_3/Cell_0_hitbox"]
+[node name="animations_3" type="AnimatedSprite2D" parent="area_cell_3/Cell_0_hitbox"]
 position = Vector2(-5.00002, -5)
 scale = Vector2(5, 5)
 speed_scale = 4.0
+script = ExtResource("7_0sbio")
 
 [node name="area_cell_4" type="Area2D" parent="." node_paths=PackedStringArray("right_neighbor", "left_neighbor", "up_neighbor", "down_neighbor")]
 position = Vector2(917, 610)
@@ -115,10 +124,11 @@ state = 1
 
 [node name="Cell_0_hitbox" type="CollisionShape2D" parent="area_cell_4"]
 
-[node name="animations" type="AnimatedSprite2D" parent="area_cell_4/Cell_0_hitbox"]
+[node name="animations_4" type="AnimatedSprite2D" parent="area_cell_4/Cell_0_hitbox"]
 position = Vector2(-6.00002, -5)
 scale = Vector2(5, 5)
 speed_scale = 4.0
+script = ExtResource("7_0sbio")
 
 [node name="area_cell_5" type="Area2D" parent="." node_paths=PackedStringArray("left_neighbor", "up_neighbor", "down_neighbor")]
 position = Vector2(1099, 610)
@@ -132,10 +142,11 @@ state = 2
 
 [node name="Cell_0_hitbox" type="CollisionShape2D" parent="area_cell_5"]
 
-[node name="animations" type="AnimatedSprite2D" parent="area_cell_5/Cell_0_hitbox"]
+[node name="animations_5" type="AnimatedSprite2D" parent="area_cell_5/Cell_0_hitbox"]
 position = Vector2(-1.52588e-05, 2)
 scale = Vector2(5, 5)
 speed_scale = 4.0
+script = ExtResource("7_0sbio")
 
 [node name="area_cell_6" type="Area2D" parent="." node_paths=PackedStringArray("right_neighbor", "up_neighbor")]
 position = Vector2(728, 802)
@@ -148,10 +159,11 @@ state = 2
 
 [node name="Cell_0_hitbox" type="CollisionShape2D" parent="area_cell_6"]
 
-[node name="animations" type="AnimatedSprite2D" parent="area_cell_6/Cell_0_hitbox"]
+[node name="animations_6" type="AnimatedSprite2D" parent="area_cell_6/Cell_0_hitbox"]
 position = Vector2(-1.00002, -3)
 scale = Vector2(5, 5)
 speed_scale = 4.0
+script = ExtResource("7_0sbio")
 
 [node name="area_cell_7" type="Area2D" parent="." node_paths=PackedStringArray("right_neighbor", "left_neighbor", "up_neighbor")]
 position = Vector2(919, 799)
@@ -164,10 +176,11 @@ column = 1
 
 [node name="Cell_0_hitbox" type="CollisionShape2D" parent="area_cell_7"]
 
-[node name="animations" type="AnimatedSprite2D" parent="area_cell_7/Cell_0_hitbox"]
+[node name="animations_7" type="AnimatedSprite2D" parent="area_cell_7/Cell_0_hitbox"]
 position = Vector2(1.99998, -1.90735e-06)
 scale = Vector2(5, 5)
 speed_scale = 4.0
+script = ExtResource("7_0sbio")
 
 [node name="area_cell_8" type="Area2D" parent="." node_paths=PackedStringArray("left_neighbor", "up_neighbor")]
 position = Vector2(1101, 799)
@@ -180,10 +193,11 @@ state = 1
 
 [node name="Cell_0_hitbox" type="CollisionShape2D" parent="area_cell_8"]
 
-[node name="animations" type="AnimatedSprite2D" parent="area_cell_8/Cell_0_hitbox"]
+[node name="animations_8" type="AnimatedSprite2D" parent="area_cell_8/Cell_0_hitbox"]
 position = Vector2(-6.00002, -5)
 scale = Vector2(5, 5)
 speed_scale = 4.0
+script = ExtResource("7_0sbio")
 
 [node name="title" type="Sprite2D" parent="."]
 position = Vector2(947, 200)
@@ -213,6 +227,7 @@ status_checker = NodePath("../status_checker")
 [node name="CursorSprite" type="Sprite2D" parent="cursor_area/Cursor"]
 
 [connection signal="down_pressed" from="." to="cursor_area" method="_on_main_down_pressed"]
+[connection signal="main_ready" from="." to="composer" method="_on_main_main_ready"]
 [connection signal="down_pressed" from="background/Control" to="cursor_area" method="_on_down_pressed"]
 [connection signal="down_pressed" from="background/Control" to="cursor_area" method="_on_control_down_pressed"]
 [connection signal="left_pressed" from="background/Control" to="cursor_area" method="_on_control_left_pressed"]
@@ -220,4 +235,8 @@ status_checker = NodePath("../status_checker")
 [connection signal="space_pressed" from="background/Control" to="cursor_area" method="_on_control_space_pressed"]
 [connection signal="up_pressed" from="background/Control" to="cursor_area" method="_on_control_up_pressed"]
 [connection signal="xxxx" from="background/Control" to="cursor_area" method="_on_control_xxxx"]
+[connection signal="area_cell_0_ready" from="area_cell_0" to="composer" method="_on_area_cell_0_area_cell_0_ready"]
+[connection signal="animations_0_ready" from="area_cell_0/Cell_0_hitbox/animations_0" to="composer" method="_on_animations_0_animations_0_ready"]
+[connection signal="status_checker_ready" from="status_checker" to="composer" method="_on_status_checker_status_checker_ready"]
+[connection signal="cursor_area_ready" from="cursor_area" to="composer" method="_on_cursor_area_cursor_area_ready"]
 [connection signal="win_condition" from="cursor_area" to="." method="_on_cursor_area_win_condition"]

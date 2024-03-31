@@ -1,7 +1,14 @@
 extends Node2D
 
+# dependencies:
+# all area_cell_x
+# status_checker
+# win_animation
+
 signal win
 signal lose
+
+signal main_ready
 
 signal right_pressed
 signal down_pressed
@@ -16,15 +23,7 @@ var node_to_be_consumed_string_2: String = ""
 var base_node_name: String = "area_cell_"
 @export var status_checker: Node2D
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	var win_animations = $win_animation
-	win_animations.hide()
-	print("test ORDER: main _ready()")
-	
-	#some_node = get_node("area_cell_" + str(0))
-	#some_node.state = some_node.State.THIRD
-	#some_node.update()
+func connect_dependencies():
 	var rand1 = randi() % 8
 	var rand2 = randi() % 8
 	if rand1 == rand2:
@@ -55,6 +54,20 @@ func _ready():
 	#node_to_be_consumed_2.update()
 	
 	print("test ORDER: main updated cell_0")
+	
+	var win_animations = $win_animation
+	win_animations.hide()
+	print("test ORDER: main _ready()")
+	pass
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	main_ready.emit()
+	
+	#some_node = get_node("area_cell_" + str(0))
+	#some_node.state = some_node.State.THIRD
+	#some_node.update()
+
 	pass # Replace with function body.
 
 func game_won():

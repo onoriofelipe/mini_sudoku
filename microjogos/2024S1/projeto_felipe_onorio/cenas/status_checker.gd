@@ -1,5 +1,11 @@
 extends Node2D
 
+# dependencies:
+# area_cell_x
+
+signal status_checker_ready
+
+
 enum State {EMPTY, FIRST, SECOND, THIRD }
 
 var cell_map: Dictionary = {}
@@ -50,8 +56,7 @@ func all_cells_ok():
 func _init():
 	pass
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
+func connect_dependencies():
 	print("cell_map not ready")
 	cell_map = { 0: $"../area_cell_0",
 				1: $"../area_cell_1",
@@ -74,6 +79,11 @@ func _ready():
 		1: [ cell_map[1],cell_map[4],cell_map[7] ],
 		2: [ cell_map[2],cell_map[5],cell_map[8] ]
 	}
+	pass
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	status_checker_ready.emit()
 	pass # Replace with function body.
 
 

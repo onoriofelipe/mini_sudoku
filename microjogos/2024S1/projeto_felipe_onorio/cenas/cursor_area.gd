@@ -1,5 +1,12 @@
 extends Area2D
 
+# dependencies:
+# status_checker
+# area_cell_0
+# get_child(0).get_child(0)
+
+signal cursor_area_ready
+
 @export var current_cell: Node
 var counter: int = 0
 var status: bool = false
@@ -7,8 +14,10 @@ var status: bool = false
 var cursor_sprite: Node2D
 var cursor_green = preload("res://microjogos/2024S1/projeto_felipe_onorio/recursos/placeholder_cursor_green_32x32.png")
 var cursor_red = preload("res://microjogos/2024S1/projeto_felipe_onorio/recursos/placeholder_cursor_32x32 - Copy.png")
+var dependencies_loaded: bool = false
 
 signal win_condition
+
 
 signal activate_cell()
 
@@ -69,12 +78,18 @@ func move_down():
 		print("out of bounds: down")
 		pass
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
+func connect_dependencies():
 	current_cell  = get_node(^"../area_cell_0")
+	print("current cell set for cursor area")
 	connect_signal_handler()
 	cursor_sprite = get_child(0).get_child(0)
 	update_cursor_status()
+	dependencies_loaded = true
+	pass
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	cursor_area_ready.emit()
 	#print("AAAAAAAAAAAAAAAA")
 	#position = Vector2(222,111)
 	#print("BBBBBBBBBBBBB")
@@ -85,7 +100,9 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	position = current_cell.position
+	if (dependencies_loaded):
+		position = current_cell.position
+	
 	#if counter % 4 == 0:
 		#move_right()
 	#if counter % 4 == 1:

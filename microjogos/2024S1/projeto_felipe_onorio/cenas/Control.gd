@@ -1,5 +1,7 @@
 extends Control
 
+# dependencies:
+# none
 
 signal xxxx()
 signal left_pressed()
