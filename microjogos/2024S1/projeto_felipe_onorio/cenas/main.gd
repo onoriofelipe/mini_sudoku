@@ -74,17 +74,31 @@ func _ready():
 	node_to_be_consumed_1 = get_node(node_to_be_consumed_string_1)
 	node_to_be_consumed_2 = get_node(node_to_be_consumed_string_2)
 	
-	var initial_state_offset = ( randi() % 3 ) + 1
+	var initial_state_offset = ( randi() % 3 )
 	
-	#0 
-	#1
-	#2
-	#3
+	#(3 + 0 ) % 3     -> 0  | expected 3
+	#(3 + 1 ) % 3     -> 1  | expected 1
+	#(3 + 2 ) % 3     -> 2  | expected 2
+	
+	#(2 + 0 ) % 3     -> 2  | expected 2
+	#(2 + 1 ) % 3     -> 0  | expected 3
+	#(2 + 2 ) % 3     -> 1  | expected 1
+	
+	#(1 + 0 ) % 3     -> 1  | expected 1
+	#(1 + 1 ) % 3     -> 2  | expected 2
+	#(1 + 2 ) % 3     -> 0  | expected 3
+	
+	# offset +0  +1  +2
+	#    1 -> 1 / 2 / 3
+	#    2 -> 2 / 3 / 1
+	#    3 -> 3 / 1 / 2
 	
 	var cell_map = status_checker.cell_map
 	
 	for cell in cell_map:
-		cell.state = ( cell.state + initial_state_offset ) % 4
+		cell.state = ( cell.state + initial_state_offset ) % 3
+		if cell.state == cell.State.EMPTY:
+			cell.state = cell.State.THIRD
 		cell.update()
 	
 	node_to_be_consumed_1.state = node_to_be_consumed_1.State.EMPTY
