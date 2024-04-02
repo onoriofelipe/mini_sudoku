@@ -25,24 +25,30 @@ func _input(event):
 	if Input.is_action_pressed("esquerda"):
 		#print("esquerda handled")
 		left_pressed.emit()
+		return
 	#if Input.is_action_just_pressed("direita"):
 	if Input.is_action_pressed("direita"):
 		#print("direita handled")
 		right_pressed.emit()
+		return
 	#if Input.is_action_just_pressed("baixo"):
 	if Input.is_action_pressed("baixo"):
 		#print("baixo handled")
 		down_pressed.emit()
+		return
 	#if Input.is_action_just_pressed("cima"):
 	if Input.is_action_pressed("cima"):
 		#print("cima handled")
 		up_pressed.emit()
+		return
 	if Input.is_action_pressed("acao"):
 		#print("acao haAAndled")
 		space_pressed.emit()
+		return
 	if Input.is_action_pressed("quit"):
 		#print("acao haAAndled")
 		quit_pressed.emit()
+		return
 	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

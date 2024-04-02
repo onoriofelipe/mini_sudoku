@@ -104,8 +104,10 @@ func _ready():
 	node_to_be_consumed_1.state = node_to_be_consumed_1.State.EMPTY
 	node_to_be_consumed_2.state = node_to_be_consumed_2.State.EMPTY
 	# make invisible without changing states or sprites lol
-	node_to_be_consumed_1.apply_scale(Vector2(0.001,0.001))
-	node_to_be_consumed_2.apply_scale(Vector2(0.001,0.001))
+	#node_to_be_consumed_1.apply_scale(Vector2(0.001,0.001))
+	node_to_be_consumed_1.get_child(0).hide()
+	#node_to_be_consumed_2.apply_scale(Vector2(0.001,0.001))
+	node_to_be_consumed_2.get_child(0).hide()
 	node_to_be_consumed_1.exterminated = true
 	node_to_be_consumed_2.exterminated = true
 	#node_to_be_consumed_1.update()

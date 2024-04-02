@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bi0ahd7cv37i6"]
+[gd_scene load_steps=16 format=3 uid="uid://bi0ahd7cv37i6"]
 
 [ext_resource type="Script" path="res://microjogos/2024S1/projeto_felipe_onorio/cenas/main.gd" id="1_1yj3m"]
 [ext_resource type="Script" path="res://microjogos/2024S1/projeto_felipe_onorio/cenas/Control.gd" id="1_8ao43"]
@@ -12,6 +12,9 @@
 [ext_resource type="SpriteFrames" uid="uid://dekn22av8ml3j" path="res://microjogos/2024S1/projeto_felipe_onorio/cenas/flame_pixely.tres" id="9_n55ik"]
 [ext_resource type="AudioStream" uid="uid://mf5dgyet2u30" path="res://microjogos/2024S1/projeto_felipe_onorio/recursos/Track 2 (Party Tonight).wav" id="10_vquf2"]
 [ext_resource type="Script" path="res://microjogos/2024S1/projeto_felipe_onorio/cenas/AudioStreamPlayer.gd" id="11_5i0dd"]
+[ext_resource type="Texture2D" uid="uid://l0t3wes4pt16" path="res://microjogos/2024S1/projeto_felipe_onorio/recursos/themes/touch_screen_button.png" id="11_v661f"]
+[ext_resource type="Texture2D" uid="uid://c4p0cmgm7pflk" path="res://microjogos/2024S1/projeto_felipe_onorio/recursos/placeholder_cursor_32x32 - Copy.png" id="12_ervd2"]
+[ext_resource type="Script" path="res://microjogos/2024S1/projeto_felipe_onorio/cenas/touch_screen_button_0.gd" id="13_ae67l"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_1yj3m")
@@ -66,6 +69,13 @@ position = Vector2(-2, -5)
 scale = Vector2(5, 5)
 speed_scale = 4.0
 
+[node name="touch_screen_button_0" type="TouchScreenButton" parent="status_checker/area_cell_0"]
+position = Vector2(-83, -67)
+scale = Vector2(4.78125, 4.78125)
+texture_normal = ExtResource("11_v661f")
+texture_pressed = ExtResource("12_ervd2")
+script = ExtResource("13_ae67l")
+
 [node name="area_cell_1" type="Area2D" parent="status_checker" node_paths=PackedStringArray("right_neighbor", "left_neighbor", "down_neighbor")]
 position = Vector2(915, 421)
 script = ExtResource("5_n4jon")
@@ -81,6 +91,13 @@ position = Vector2(2, -2)
 scale = Vector2(5, 5)
 speed_scale = 4.0
 
+[node name="touch_screen_button_0" type="TouchScreenButton" parent="status_checker/area_cell_1"]
+position = Vector2(-83, -67)
+scale = Vector2(4.78125, 4.78125)
+texture_normal = ExtResource("11_v661f")
+texture_pressed = ExtResource("12_ervd2")
+script = ExtResource("13_ae67l")
+
 [node name="area_cell_2" type="Area2D" parent="status_checker" node_paths=PackedStringArray("left_neighbor", "down_neighbor")]
 position = Vector2(1097, 421)
 script = ExtResource("5_n4jon")
@@ -92,6 +109,13 @@ column = 2
 [node name="animations_2" type="AnimatedSprite2D" parent="status_checker/area_cell_2"]
 scale = Vector2(5, 5)
 speed_scale = 4.0
+
+[node name="touch_screen_button_0" type="TouchScreenButton" parent="status_checker/area_cell_2"]
+position = Vector2(-83, -67)
+scale = Vector2(4.78125, 4.78125)
+texture_normal = ExtResource("11_v661f")
+texture_pressed = ExtResource("12_ervd2")
+script = ExtResource("13_ae67l")
 
 [node name="area_cell_3" type="Area2D" parent="status_checker" node_paths=PackedStringArray("right_neighbor", "up_neighbor", "down_neighbor")]
 position = Vector2(726, 613)
@@ -106,6 +130,13 @@ column = 0
 position = Vector2(-5, -5)
 scale = Vector2(5, 5)
 speed_scale = 4.0
+
+[node name="touch_screen_button_0" type="TouchScreenButton" parent="status_checker/area_cell_3"]
+position = Vector2(-83, -67)
+scale = Vector2(4.78125, 4.78125)
+texture_normal = ExtResource("11_v661f")
+texture_pressed = ExtResource("12_ervd2")
+script = ExtResource("13_ae67l")
 
 [node name="area_cell_4" type="Area2D" parent="status_checker" node_paths=PackedStringArray("right_neighbor", "left_neighbor", "up_neighbor", "down_neighbor")]
 position = Vector2(917, 610)
@@ -123,6 +154,13 @@ position = Vector2(-6, -5)
 scale = Vector2(5, 5)
 speed_scale = 4.0
 
+[node name="touch_screen_button_0" type="TouchScreenButton" parent="status_checker/area_cell_4"]
+position = Vector2(-83, -67)
+scale = Vector2(4.78125, 4.78125)
+texture_normal = ExtResource("11_v661f")
+texture_pressed = ExtResource("12_ervd2")
+script = ExtResource("13_ae67l")
+
 [node name="area_cell_5" type="Area2D" parent="status_checker" node_paths=PackedStringArray("left_neighbor", "up_neighbor", "down_neighbor")]
 position = Vector2(1099, 610)
 script = ExtResource("5_n4jon")
@@ -138,6 +176,13 @@ position = Vector2(0, 2)
 scale = Vector2(5, 5)
 speed_scale = 4.0
 
+[node name="touch_screen_button_0" type="TouchScreenButton" parent="status_checker/area_cell_5"]
+position = Vector2(-83, -67)
+scale = Vector2(4.78125, 4.78125)
+texture_normal = ExtResource("11_v661f")
+texture_pressed = ExtResource("12_ervd2")
+script = ExtResource("13_ae67l")
+
 [node name="area_cell_6" type="Area2D" parent="status_checker" node_paths=PackedStringArray("right_neighbor", "up_neighbor")]
 position = Vector2(728, 802)
 script = ExtResource("5_n4jon")
@@ -151,6 +196,13 @@ state = 2
 position = Vector2(-1, -3)
 scale = Vector2(5, 5)
 speed_scale = 4.0
+
+[node name="touch_screen_button_0" type="TouchScreenButton" parent="status_checker/area_cell_6"]
+position = Vector2(-83, -67)
+scale = Vector2(4.78125, 4.78125)
+texture_normal = ExtResource("11_v661f")
+texture_pressed = ExtResource("12_ervd2")
+script = ExtResource("13_ae67l")
 
 [node name="area_cell_7" type="Area2D" parent="status_checker" node_paths=PackedStringArray("right_neighbor", "left_neighbor", "up_neighbor")]
 position = Vector2(919, 799)
@@ -166,6 +218,13 @@ position = Vector2(2, 0)
 scale = Vector2(5, 5)
 speed_scale = 4.0
 
+[node name="touch_screen_button_0" type="TouchScreenButton" parent="status_checker/area_cell_7"]
+position = Vector2(-83, -67)
+scale = Vector2(4.78125, 4.78125)
+texture_normal = ExtResource("11_v661f")
+texture_pressed = ExtResource("12_ervd2")
+script = ExtResource("13_ae67l")
+
 [node name="area_cell_8" type="Area2D" parent="status_checker" node_paths=PackedStringArray("left_neighbor", "up_neighbor")]
 position = Vector2(1101, 799)
 script = ExtResource("5_n4jon")
@@ -179,6 +238,13 @@ state = 1
 position = Vector2(-6, -5)
 scale = Vector2(5, 5)
 speed_scale = 4.0
+
+[node name="touch_screen_button_0" type="TouchScreenButton" parent="status_checker/area_cell_8"]
+position = Vector2(-83, -67)
+scale = Vector2(4.78125, 4.78125)
+texture_normal = ExtResource("11_v661f")
+texture_pressed = ExtResource("12_ervd2")
+script = ExtResource("13_ae67l")
 
 [node name="cursor_area" type="Area2D" parent="."]
 position = Vector2(1380, 553)

@@ -161,4 +161,9 @@ func _on_control_quit_pressed():
 #func _on_main_down_pressed():
 	#print("_ON_DOWN_PRESSED MAIN CALLED")
 	#pass # Replace with function body.
+	
+func _on_some_cell_touched(cell: Node):
+	current_cell = cell
+	update_cursor_status()
+	update_cursor_position()
 

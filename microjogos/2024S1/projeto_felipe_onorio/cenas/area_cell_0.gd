@@ -33,7 +33,8 @@ func change_next_state():
 	if state == State.EMPTY:
 		state += 1
 	if exterminated:
-		apply_scale(Vector2(1000,1000))
+		#apply_scale(Vector2(1000,1000))
+		get_child(0).show()
 		exterminated = false
 	#print("State from cell_0 changed to: ", state)
 	match state:
@@ -77,4 +78,9 @@ func _process(_delta):
 
 func _on_cursor_area_activate_cell():
 	change_next_state()
+	pass # Replace with function body.
+
+func _on_touch_screen_button_0_pressed():
+	_on_cursor_area_activate_cell()
+	print("touchscreenbuttonpressed")
 	pass # Replace with function body.
