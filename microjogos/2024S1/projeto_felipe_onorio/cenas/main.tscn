@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bi0ahd7cv37i6"]
+[gd_scene load_steps=26 format=3 uid="uid://bi0ahd7cv37i6"]
 
 [ext_resource type="Script" path="res://microjogos/2024S1/projeto_felipe_onorio/cenas/main.gd" id="1_1yj3m"]
 [ext_resource type="Script" path="res://microjogos/2024S1/projeto_felipe_onorio/cenas/Control.gd" id="1_8ao43"]
@@ -6,18 +6,33 @@
 [ext_resource type="Script" path="res://microjogos/2024S1/projeto_felipe_onorio/cenas/cursor_area.gd" id="3_lmjue"]
 [ext_resource type="Script" path="res://microjogos/2024S1/projeto_felipe_onorio/cenas/area_cell_0.gd" id="5_n4jon"]
 [ext_resource type="Script" path="res://microjogos/2024S1/projeto_felipe_onorio/cenas/status_checker.gd" id="5_vfi3m"]
+[ext_resource type="AudioStream" uid="uid://bsc47x7jsndsq" path="res://microjogos/2024S1/projeto_felipe_onorio/recursos/Track_2_(Party_Tonight)_shortened.mp3" id="6_8akh2"]
 [ext_resource type="Texture2D" uid="uid://ssb2yyob2j30" path="res://microjogos/2024S1/projeto_felipe_onorio/recursos/cobblestone_path.jpg" id="6_oscpn"]
 [ext_resource type="Texture2D" uid="uid://csfuxrvj5bd5c" path="res://microjogos/2024S1/projeto_felipe_onorio/recursos/titulo.png" id="7_kmapp"]
 [ext_resource type="Texture2D" uid="uid://c4f55sio3uqs2" path="res://microjogos/2024S1/projeto_felipe_onorio/recursos/mute_button.png" id="8_5gh8y"]
 [ext_resource type="Script" path="res://microjogos/2024S1/projeto_felipe_onorio/cenas/mute_button.gd" id="8_38gli"]
 [ext_resource type="Texture2D" uid="uid://bn7wtjhmwxbby" path="res://microjogos/2024S1/projeto_felipe_onorio/recursos/instructions.png" id="8_mf117"]
 [ext_resource type="SpriteFrames" uid="uid://dekn22av8ml3j" path="res://microjogos/2024S1/projeto_felipe_onorio/cenas/flame_pixely.tres" id="9_n55ik"]
-[ext_resource type="AudioStream" uid="uid://mf5dgyet2u30" path="res://microjogos/2024S1/projeto_felipe_onorio/recursos/Track 2 (Party Tonight).wav" id="10_vquf2"]
 [ext_resource type="Script" path="res://microjogos/2024S1/projeto_felipe_onorio/cenas/AudioStreamPlayer.gd" id="11_5i0dd"]
 [ext_resource type="Texture2D" uid="uid://l0t3wes4pt16" path="res://microjogos/2024S1/projeto_felipe_onorio/recursos/themes/touch_screen_button.png" id="11_v661f"]
 [ext_resource type="Script" path="res://microjogos/2024S1/projeto_felipe_onorio/cenas/touch_screen_button_mute.gd" id="12_784j2"]
 [ext_resource type="Texture2D" uid="uid://c4p0cmgm7pflk" path="res://microjogos/2024S1/projeto_felipe_onorio/recursos/placeholder_cursor_32x32 - Copy.png" id="12_ervd2"]
 [ext_resource type="Script" path="res://microjogos/2024S1/projeto_felipe_onorio/cenas/touch_screen_button_0.gd" id="13_ae67l"]
+[ext_resource type="Material" uid="uid://g5cybx3i0v04" path="res://microjogos/2024S1/projeto_felipe_onorio/recursos/score_canvas_material.tres" id="13_akpp2"]
+[ext_resource type="Script" path="res://microjogos/2024S1/projeto_felipe_onorio/cenas/score_label.gd" id="14_scouh"]
+[ext_resource type="Script" path="res://microjogos/2024S1/projeto_felipe_onorio/cenas/next_display.gd" id="17_y5pjc"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_eo2l5"]
+diffuse_texture = ExtResource("12_ervd2")
+
+[sub_resource type="Curve" id="Curve_wm11p"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_of1jo"]
+colors = PackedColorArray(1, 0, 0, 1, 1, 1, 0, 1)
+
+[sub_resource type="Gradient" id="Gradient_vok31"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_1yj3m")
@@ -48,7 +63,7 @@ sprite_frames = ExtResource("9_n55ik")
 speed_scale = 4.0
 
 [node name="audio_stream_player" type="AudioStreamPlayer" parent="interface_static_elements"]
-stream = ExtResource("10_vquf2")
+stream = ExtResource("6_8akh2")
 volume_db = -24.471
 script = ExtResource("11_5i0dd")
 
@@ -64,6 +79,28 @@ scale = Vector2(1.24728, 1.24728)
 texture_normal = ExtResource("11_v661f")
 texture_pressed = ExtResource("12_ervd2")
 script = ExtResource("12_784j2")
+
+[node name="score_label" type="RichTextLabel" parent="interface_static_elements"]
+visible = false
+z_index = 1
+material = ExtResource("13_akpp2")
+offset_left = 308.0
+offset_top = 441.0
+offset_right = 570.0
+offset_bottom = 546.0
+
+[node name="simple_score_label" type="Label" parent="interface_static_elements"]
+z_index = 1
+offset_left = 223.0
+offset_top = 335.0
+offset_right = 648.0
+offset_bottom = 564.0
+theme_override_font_sizes/font_size = 100
+text = "666
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("14_scouh")
 
 [node name="composer" type="Node" parent="."]
 script = ExtResource("2_ch7fa")
@@ -93,6 +130,13 @@ texture_normal = ExtResource("11_v661f")
 texture_pressed = ExtResource("12_ervd2")
 script = ExtResource("13_ae67l")
 
+[node name="next_display" type="AnimatedSprite2D" parent="status_checker/area_cell_0"]
+z_index = 1
+position = Vector2(-150, -150)
+scale = Vector2(3, 3)
+speed_scale = 4.0
+script = ExtResource("17_y5pjc")
+
 [node name="area_cell_1" type="Area2D" parent="status_checker" node_paths=PackedStringArray("right_neighbor", "left_neighbor", "down_neighbor")]
 position = Vector2(915, 421)
 script = ExtResource("5_n4jon")
@@ -115,6 +159,13 @@ texture_normal = ExtResource("11_v661f")
 texture_pressed = ExtResource("12_ervd2")
 script = ExtResource("13_ae67l")
 
+[node name="next_display" type="AnimatedSprite2D" parent="status_checker/area_cell_1"]
+z_index = 1
+position = Vector2(0, -150)
+scale = Vector2(3, 3)
+speed_scale = 4.0
+script = ExtResource("17_y5pjc")
+
 [node name="area_cell_2" type="Area2D" parent="status_checker" node_paths=PackedStringArray("left_neighbor", "down_neighbor")]
 position = Vector2(1097, 421)
 script = ExtResource("5_n4jon")
@@ -133,6 +184,13 @@ scale = Vector2(4.78125, 4.78125)
 texture_normal = ExtResource("11_v661f")
 texture_pressed = ExtResource("12_ervd2")
 script = ExtResource("13_ae67l")
+
+[node name="next_display" type="AnimatedSprite2D" parent="status_checker/area_cell_2"]
+z_index = 1
+position = Vector2(150, -150)
+scale = Vector2(3, 3)
+speed_scale = 4.0
+script = ExtResource("17_y5pjc")
 
 [node name="area_cell_3" type="Area2D" parent="status_checker" node_paths=PackedStringArray("right_neighbor", "up_neighbor", "down_neighbor")]
 position = Vector2(726, 613)
@@ -154,6 +212,13 @@ scale = Vector2(4.78125, 4.78125)
 texture_normal = ExtResource("11_v661f")
 texture_pressed = ExtResource("12_ervd2")
 script = ExtResource("13_ae67l")
+
+[node name="next_display" type="AnimatedSprite2D" parent="status_checker/area_cell_3"]
+z_index = 1
+position = Vector2(-150, 0)
+scale = Vector2(3, 3)
+speed_scale = 4.0
+script = ExtResource("17_y5pjc")
 
 [node name="area_cell_4" type="Area2D" parent="status_checker" node_paths=PackedStringArray("right_neighbor", "left_neighbor", "up_neighbor", "down_neighbor")]
 position = Vector2(917, 610)
@@ -178,6 +243,13 @@ texture_normal = ExtResource("11_v661f")
 texture_pressed = ExtResource("12_ervd2")
 script = ExtResource("13_ae67l")
 
+[node name="next_display" type="AnimatedSprite2D" parent="status_checker/area_cell_4"]
+z_index = 1
+position = Vector2(54.435, 0)
+scale = Vector2(3, 3)
+speed_scale = 4.0
+script = ExtResource("17_y5pjc")
+
 [node name="area_cell_5" type="Area2D" parent="status_checker" node_paths=PackedStringArray("left_neighbor", "up_neighbor", "down_neighbor")]
 position = Vector2(1099, 610)
 script = ExtResource("5_n4jon")
@@ -200,6 +272,13 @@ texture_normal = ExtResource("11_v661f")
 texture_pressed = ExtResource("12_ervd2")
 script = ExtResource("13_ae67l")
 
+[node name="next_display" type="AnimatedSprite2D" parent="status_checker/area_cell_5"]
+z_index = 1
+position = Vector2(150, 0)
+scale = Vector2(3, 3)
+speed_scale = 4.0
+script = ExtResource("17_y5pjc")
+
 [node name="area_cell_6" type="Area2D" parent="status_checker" node_paths=PackedStringArray("right_neighbor", "up_neighbor")]
 position = Vector2(728, 802)
 script = ExtResource("5_n4jon")
@@ -220,6 +299,13 @@ scale = Vector2(4.78125, 4.78125)
 texture_normal = ExtResource("11_v661f")
 texture_pressed = ExtResource("12_ervd2")
 script = ExtResource("13_ae67l")
+
+[node name="next_display" type="AnimatedSprite2D" parent="status_checker/area_cell_6"]
+z_index = 1
+position = Vector2(-150, 150)
+scale = Vector2(3, 3)
+speed_scale = 4.0
+script = ExtResource("17_y5pjc")
 
 [node name="area_cell_7" type="Area2D" parent="status_checker" node_paths=PackedStringArray("right_neighbor", "left_neighbor", "up_neighbor")]
 position = Vector2(919, 799)
@@ -242,6 +328,13 @@ texture_normal = ExtResource("11_v661f")
 texture_pressed = ExtResource("12_ervd2")
 script = ExtResource("13_ae67l")
 
+[node name="next_display" type="AnimatedSprite2D" parent="status_checker/area_cell_7"]
+z_index = 1
+position = Vector2(0, 150)
+scale = Vector2(3, 3)
+speed_scale = 4.0
+script = ExtResource("17_y5pjc")
+
 [node name="area_cell_8" type="Area2D" parent="status_checker" node_paths=PackedStringArray("left_neighbor", "up_neighbor")]
 position = Vector2(1101, 799)
 script = ExtResource("5_n4jon")
@@ -263,6 +356,13 @@ texture_normal = ExtResource("11_v661f")
 texture_pressed = ExtResource("12_ervd2")
 script = ExtResource("13_ae67l")
 
+[node name="next_display" type="AnimatedSprite2D" parent="status_checker/area_cell_8"]
+z_index = 1
+position = Vector2(150, 150)
+scale = Vector2(3, 3)
+speed_scale = 4.0
+script = ExtResource("17_y5pjc")
+
 [node name="cursor_area" type="Area2D" parent="."]
 position = Vector2(1380, 553)
 scale = Vector2(5, 5)
@@ -274,14 +374,35 @@ script = ExtResource("3_lmjue")
 layout_mode = 3
 anchors_preset = 10
 anchor_right = 1.0
-offset_left = 19.0013
-offset_top = 16.0002
-offset_right = 1073.0
-offset_bottom = 738.001
+offset_left = 40.0
+offset_top = 1111.0
+offset_right = 206.0
+offset_bottom = 1225.0
 grow_horizontal = 2
 script = ExtResource("1_8ao43")
 
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+z_index = 1
+position = Vector2(200, 200)
+amount = 16
+lifetime = 2.0
+speed_scale = 2.33
+texture = SubResource("CanvasTexture_eo2l5")
+emission_shape = 1
+emission_sphere_radius = 128.0
+direction = Vector2(50, 50)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 50.0
+initial_velocity_max = 50.0
+scale_amount_max = 5.0
+scale_amount_curve = SubResource("Curve_wm11p")
+color = Color(0.87451, 1, 0.32549, 1)
+color_ramp = SubResource("Gradient_of1jo")
+color_initial_ramp = SubResource("Gradient_vok31")
+
 [connection signal="down_pressed" from="." to="cursor_area" method="_on_main_down_pressed"]
+[connection signal="finished" from="interface_static_elements/audio_stream_player" to="interface_static_elements/audio_stream_player" method="_on_finished"]
 [connection signal="win_condition" from="cursor_area" to="." method="_on_cursor_area_win_condition"]
 [connection signal="down_pressed" from="Control" to="cursor_area" method="_on_control_down_pressed"]
 [connection signal="left_pressed" from="Control" to="cursor_area" method="_on_control_left_pressed"]

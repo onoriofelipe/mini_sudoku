@@ -6,6 +6,7 @@ extends Area2D
 # get_child(0).get_child(0)
 
 #signal cursor_area_ready
+signal row_and_column_complete(row: int, column: int)
 
 @onready var current_cell: Node = $"../status_checker/area_cell_4"
 @onready var cursor_sprite: Node2D = $cursor_sprite
@@ -24,10 +25,11 @@ func update_cursor_status():
 	#print("status, row, column: ", status, ", ", current_cell.row, ", ", current_cell.column)
 	#status = !status
 	if status == true:
-		print("changing cursor to green")
+		#print("changing cursor to green")
+		row_and_column_complete.emit(current_cell.row, current_cell.column)
 		cursor_sprite.set_texture(cursor_green)
 	else:
-		print("changing cursor to red")
+		#print("changing cursor to red")
 		cursor_sprite.set_texture(cursor_red)
 	if status_checker.all_cells_ok():
 		win_condition.emit()

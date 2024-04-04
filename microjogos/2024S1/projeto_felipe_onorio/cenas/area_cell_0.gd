@@ -16,11 +16,17 @@ extends Area2D
 @export var row: int = -1
 @export var column: int = -1
 
+signal cell_popped(state: State)
+
 enum State {EMPTY, FIRST, SECOND, THIRD }
 var exterminated : bool = false
 
 @export var state : State = State.THIRD
+var last_state : State = State.EMPTY
 @onready var sprite_animation: Node2D = get_child(0)
+@onready var next_display: Node2D = $next_display
+@onready var cursor_area: Node = $"../../cursor_area"
+@onready var score_label: Node = $"../../interface_static_elements/simple_score_label"
 static var animation_watery = preload("res://microjogos/2024S1/projeto_felipe_onorio/cenas/watery.tres")
 static var animation_flame_fluffy = preload("res://microjogos/2024S1/projeto_felipe_onorio/cenas/flame_fluffy.tres")
 static var animation_flame_pixely = preload("res://microjogos/2024S1/projeto_felipe_onorio/cenas/flame_pixely.tres")
@@ -70,6 +76,32 @@ func _ready():
 	#sprite_animation.set_sprite_frames(animation_watery)
 	#sprite_animation.play("default")
 	#area_cell_0_ready.emit(self)
+	cursor_area.row_and_column_complete.connect(self.maybe_destroy_self)
+	cell_popped.connect(score_label.accumulate_state)
+	pass
+
+func maybe_destroy_self(other_row: int, other_column: int):
+	if (row == other_row) || ( column == other_column ) :
+		destroy_self_get_next_add_points()
+		pass
+
+func destroy_self_get_next_add_points():
+	destroy_self()
+	get_next()
+	add_points()
+
+func destroy_self():
+	# empty for now, particles would be used, animation, etc
+	pass
+
+func get_next():
+	last_state = state
+	state = next_display.pop_next()
+	update()
+	pass
+
+func add_points():
+	cell_popped.emit(last_state)
 	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
