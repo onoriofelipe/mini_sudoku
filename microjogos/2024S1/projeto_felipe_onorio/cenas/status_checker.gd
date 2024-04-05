@@ -5,6 +5,12 @@ extends Node2D
 
 #signal status_checker_ready
 
+signal warn_row_complete_0()
+signal warn_row_complete_1()
+signal warn_row_complete_2()
+signal warn_col_complete_0()
+signal warn_col_complete_1()
+signal warn_col_complete_2()
 
 enum State {EMPTY, FIRST, SECOND, THIRD }
 
@@ -19,6 +25,13 @@ enum State {EMPTY, FIRST, SECOND, THIRD }
 	$area_cell_7,
 	$area_cell_8
 ]
+
+@onready var row_0: Node = $row_0
+@onready var row_1: Node = $row_1
+@onready var row_2: Node = $row_2
+@onready var col_0: Node = $col_0
+@onready var col_1: Node = $col_1
+@onready var col_2: Node = $col_2
 
 	#row_map = {
 		#0: [ cell_map[0],cell_map[1],cell_map[2] ],
@@ -62,7 +75,29 @@ func row_ok(row: int):
 	var all_unique = ( row_map[row][0].state != row_map[row][1].state &&
 						row_map[row][1].state != row_map[row][2].state &&
 						row_map[row][2].state != row_map[row][0].state )
+	
+	warn_row_complete(row)
 	return all_unique
+
+func warn_row_complete(index: int):
+	match index:
+		0:
+			warn_row_complete_0.emit()
+		1:
+			warn_row_complete_1.emit()
+		2:
+			warn_row_complete_2.emit()
+	pass
+func warn_col_complete(index: int):
+	match index:
+		0:
+			warn_col_complete_0.emit()
+		1:
+			warn_col_complete_1.emit()
+		2:
+			warn_col_complete_2.emit()
+	pass
+	
 
 func column_ok(column: int):
 	if any_column_element_empty(column):
@@ -71,6 +106,7 @@ func column_ok(column: int):
 	var all_unique = ( column_map[column][0].state != column_map[column][1].state &&
 						column_map[column][1].state != column_map[column][2].state &&
 						column_map[column][2].state != column_map[column][0].state )
+	warn_col_complete(column)
 	return all_unique
 
 func check_row_and_column(row: int, column: int):
@@ -80,6 +116,17 @@ func all_cells_ok():
 	var everything_is_fine = ( row_ok(0) && row_ok(1) && row_ok(2) &&
 								column_ok(0) && column_ok(1) && column_ok(2) )
 	return everything_is_fine
+
+# TODO: this
+#.connect(area_cell_0.destroy_self_get_next_add_points)
+
+func scan_for_completions():
+	# TODO: implement
+	pass
+
+# interface: every change (board iteration, movement does not trigger this),
+#            then check for completions, then do a pass and mark affected cells
+#            as complete, then destroy these, then wait animations, then recheck
 
 # TODO: functions for highlighting all repeated cells in a row or in a column
 

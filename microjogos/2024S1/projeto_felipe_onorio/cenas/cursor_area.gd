@@ -26,7 +26,7 @@ func update_cursor_status():
 	#status = !status
 	if status == true:
 		#print("changing cursor to green")
-		row_and_column_complete.emit(current_cell.row, current_cell.column)
+		#row_and_column_complete.emit(current_cell.row, current_cell.column)
 		cursor_sprite.set_texture(cursor_green)
 	else:
 		#print("changing cursor to red")

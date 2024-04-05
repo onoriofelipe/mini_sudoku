@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://bi0ahd7cv37i6"]
+[gd_scene load_steps=31 format=3 uid="uid://bi0ahd7cv37i6"]
 
 [ext_resource type="Script" path="res://microjogos/2024S1/projeto_felipe_onorio/cenas/main.gd" id="1_1yj3m"]
 [ext_resource type="Script" path="res://microjogos/2024S1/projeto_felipe_onorio/cenas/Control.gd" id="1_8ao43"]
@@ -22,6 +22,7 @@
 [ext_resource type="Script" path="res://microjogos/2024S1/projeto_felipe_onorio/cenas/mana.gd" id="15_1rcye"]
 [ext_resource type="Script" path="res://microjogos/2024S1/projeto_felipe_onorio/cenas/next_display.gd" id="17_y5pjc"]
 [ext_resource type="Script" path="res://microjogos/2024S1/projeto_felipe_onorio/cenas/row.gd" id="20_n1n8m"]
+[ext_resource type="Script" path="res://microjogos/2024S1/projeto_felipe_onorio/cenas/the_test_button.gd" id="23_dofep"]
 
 [sub_resource type="Gradient" id="Gradient_n40rd"]
 offsets = PackedFloat32Array(0, 0.652439)
@@ -151,6 +152,8 @@ tint_under = Color(1, 1, 1, 0)
 tint_over = Color(1, 1, 1, 0)
 tint_progress = Color(0.215686, 0.407843, 0.219608, 1)
 script = ExtResource("15_1rcye")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="interface_static_elements"]
 
 [node name="composer" type="Node" parent="."]
 script = ExtResource("2_ch7fa")
@@ -474,6 +477,13 @@ scale_amount_curve = SubResource("Curve_wm11p")
 color = Color(0.87451, 1, 0.32549, 1)
 color_ramp = SubResource("Gradient_of1jo")
 color_initial_ramp = SubResource("Gradient_vok31")
+
+[node name="the_test_button" type="TouchScreenButton" parent="."]
+position = Vector2(1515, 364)
+scale = Vector2(4.78125, 4.78125)
+texture_normal = ExtResource("11_v661f")
+texture_pressed = ExtResource("12_ervd2")
+script = ExtResource("23_dofep")
 
 [connection signal="down_pressed" from="." to="cursor_area" method="_on_main_down_pressed"]
 [connection signal="finished" from="interface_static_elements/audio_stream_player" to="interface_static_elements/audio_stream_player" method="_on_finished"]
