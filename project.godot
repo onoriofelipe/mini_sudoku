@@ -15,6 +15,10 @@ run/main_scene="res://microjogos/2024S1/projeto_felipe_onorio/cenas/main.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[audio]
+
+driver/output_latency.web=100
+
 [display]
 
 window/size/viewport_width=1920
