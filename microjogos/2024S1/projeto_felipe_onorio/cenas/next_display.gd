@@ -29,19 +29,15 @@ func populate_current_state_with_random():
 			set_sprite_frames(animation_leaf)
 	play("default")
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	populate_current_state_with_random()
 	set_modulate(Color(1,1,1,0.4))
-	pass # Replace with function body.
 
 func _on_handle_animation_test():
 	# lerp position to X over Y seconds
 	# interpolate alpha to 1 over Y seconds
 	# scale from 3 to 5 over Y seconds
-	
 	pass
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass

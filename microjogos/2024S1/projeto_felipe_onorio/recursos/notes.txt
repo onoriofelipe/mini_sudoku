@@ -1,4 +1,8 @@
 TODO:
+[]only mouse movement / touch screen interface is important for now
+[]updates are related to changes of state triggered by the buttons
+
+TODO:
 []portals in each cardinal direction for changing the theme
 	[]predefined ones in three directions, random button in down direction
 	[]animation for choosing the portal, teleport back to the square before

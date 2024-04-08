@@ -92,7 +92,7 @@ z_index = 1
 position = Vector2(-20.8696, -17.8551)
 scale = Vector2(1.24728, 1.24728)
 texture_normal = ExtResource("11_v661f")
-texture_pressed = ExtResource("12_ervd2")
+texture_pressed = ExtResource("11_v661f")
 script = ExtResource("12_784j2")
 
 [node name="simple_score_label" type="Label" parent="interface_static_elements"]
@@ -180,7 +180,7 @@ speed_scale = 4.0
 position = Vector2(-83, -67)
 scale = Vector2(4.78125, 4.78125)
 texture_normal = ExtResource("11_v661f")
-texture_pressed = ExtResource("12_ervd2")
+texture_pressed = ExtResource("11_v661f")
 script = ExtResource("13_ae67l")
 
 [node name="next_display" type="AnimatedSprite2D" parent="status_checker/area_cell_0"]
@@ -209,7 +209,7 @@ speed_scale = 4.0
 position = Vector2(-83, -67)
 scale = Vector2(4.78125, 4.78125)
 texture_normal = ExtResource("11_v661f")
-texture_pressed = ExtResource("12_ervd2")
+texture_pressed = ExtResource("11_v661f")
 script = ExtResource("13_ae67l")
 
 [node name="next_display" type="AnimatedSprite2D" parent="status_checker/area_cell_1"]
@@ -235,7 +235,7 @@ speed_scale = 4.0
 position = Vector2(-83, -67)
 scale = Vector2(4.78125, 4.78125)
 texture_normal = ExtResource("11_v661f")
-texture_pressed = ExtResource("12_ervd2")
+texture_pressed = ExtResource("11_v661f")
 script = ExtResource("13_ae67l")
 
 [node name="next_display" type="AnimatedSprite2D" parent="status_checker/area_cell_2"]
@@ -263,7 +263,7 @@ speed_scale = 4.0
 position = Vector2(-83, -67)
 scale = Vector2(4.78125, 4.78125)
 texture_normal = ExtResource("11_v661f")
-texture_pressed = ExtResource("12_ervd2")
+texture_pressed = ExtResource("11_v661f")
 script = ExtResource("13_ae67l")
 
 [node name="next_display" type="AnimatedSprite2D" parent="status_checker/area_cell_3"]
@@ -293,7 +293,7 @@ speed_scale = 4.0
 position = Vector2(-83, -67)
 scale = Vector2(4.78125, 4.78125)
 texture_normal = ExtResource("11_v661f")
-texture_pressed = ExtResource("12_ervd2")
+texture_pressed = ExtResource("11_v661f")
 script = ExtResource("13_ae67l")
 
 [node name="next_display" type="AnimatedSprite2D" parent="status_checker/area_cell_4"]
@@ -322,7 +322,7 @@ speed_scale = 4.0
 position = Vector2(-83, -67)
 scale = Vector2(4.78125, 4.78125)
 texture_normal = ExtResource("11_v661f")
-texture_pressed = ExtResource("12_ervd2")
+texture_pressed = ExtResource("11_v661f")
 script = ExtResource("13_ae67l")
 
 [node name="next_display" type="AnimatedSprite2D" parent="status_checker/area_cell_5"]
@@ -350,7 +350,7 @@ speed_scale = 4.0
 position = Vector2(-83, -67)
 scale = Vector2(4.78125, 4.78125)
 texture_normal = ExtResource("11_v661f")
-texture_pressed = ExtResource("12_ervd2")
+texture_pressed = ExtResource("11_v661f")
 script = ExtResource("13_ae67l")
 
 [node name="next_display" type="AnimatedSprite2D" parent="status_checker/area_cell_6"]
@@ -378,7 +378,7 @@ speed_scale = 4.0
 position = Vector2(-83, -67)
 scale = Vector2(4.78125, 4.78125)
 texture_normal = ExtResource("11_v661f")
-texture_pressed = ExtResource("12_ervd2")
+texture_pressed = ExtResource("11_v661f")
 script = ExtResource("13_ae67l")
 
 [node name="next_display" type="AnimatedSprite2D" parent="status_checker/area_cell_7"]
@@ -406,7 +406,7 @@ speed_scale = 4.0
 position = Vector2(-83, -67)
 scale = Vector2(4.78125, 4.78125)
 texture_normal = ExtResource("11_v661f")
-texture_pressed = ExtResource("12_ervd2")
+texture_pressed = ExtResource("11_v661f")
 script = ExtResource("13_ae67l")
 
 [node name="next_display" type="AnimatedSprite2D" parent="status_checker/area_cell_8"]
@@ -416,29 +416,35 @@ scale = Vector2(3, 3)
 speed_scale = 4.0
 script = ExtResource("17_y5pjc")
 
-[node name="row_0" type="Sprite2D" parent="status_checker"]
+[node name="row_0" type="Sprite2D" parent="status_checker" node_paths=PackedStringArray("cells")]
 script = ExtResource("20_n1n8m")
 index = 0
+cells = [NodePath("../area_cell_0"), NodePath("../area_cell_1"), NodePath("../area_cell_2")]
 
-[node name="row_1" type="Sprite2D" parent="status_checker"]
+[node name="row_1" type="Sprite2D" parent="status_checker" node_paths=PackedStringArray("cells")]
 script = ExtResource("20_n1n8m")
 index = 1
+cells = [NodePath("../area_cell_3"), NodePath("../area_cell_4"), NodePath("../area_cell_5")]
 
-[node name="row_2" type="Sprite2D" parent="status_checker"]
+[node name="row_2" type="Sprite2D" parent="status_checker" node_paths=PackedStringArray("cells")]
 script = ExtResource("20_n1n8m")
 index = 2
+cells = [NodePath("../area_cell_6"), NodePath("../area_cell_7"), NodePath("../area_cell_8")]
 
-[node name="col_0" type="Sprite2D" parent="status_checker"]
+[node name="col_0" type="Sprite2D" parent="status_checker" node_paths=PackedStringArray("cells")]
 script = ExtResource("20_n1n8m")
 index = 0
+cells = [NodePath("../area_cell_0"), NodePath("../area_cell_3"), NodePath("../area_cell_6")]
 
-[node name="col_1" type="Sprite2D" parent="status_checker"]
+[node name="col_1" type="Sprite2D" parent="status_checker" node_paths=PackedStringArray("cells")]
 script = ExtResource("20_n1n8m")
 index = 1
+cells = [NodePath("../area_cell_1"), NodePath("../area_cell_4"), NodePath("../area_cell_7")]
 
-[node name="col_2" type="Sprite2D" parent="status_checker"]
+[node name="col_2" type="Sprite2D" parent="status_checker" node_paths=PackedStringArray("cells")]
 script = ExtResource("20_n1n8m")
 index = 2
+cells = [NodePath("../area_cell_2"), NodePath("../area_cell_5"), NodePath("../area_cell_8")]
 
 [node name="cursor_area" type="Area2D" parent="."]
 position = Vector2(1380, 553)
