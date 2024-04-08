@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://bi0ahd7cv37i6"]
+[gd_scene load_steps=34 format=3 uid="uid://bi0ahd7cv37i6"]
 
 [ext_resource type="Script" path="res://microjogos/2024S1/projeto_felipe_onorio/cenas/main.gd" id="1_1yj3m"]
 [ext_resource type="Script" path="res://microjogos/2024S1/projeto_felipe_onorio/cenas/Control.gd" id="1_8ao43"]
@@ -21,6 +21,7 @@
 [ext_resource type="Script" path="res://microjogos/2024S1/projeto_felipe_onorio/cenas/score_label.gd" id="14_scouh"]
 [ext_resource type="Script" path="res://microjogos/2024S1/projeto_felipe_onorio/cenas/mana.gd" id="15_1rcye"]
 [ext_resource type="Script" path="res://microjogos/2024S1/projeto_felipe_onorio/cenas/next_display.gd" id="17_y5pjc"]
+[ext_resource type="Script" path="res://microjogos/2024S1/projeto_felipe_onorio/cenas/destroyed_animation.gd" id="19_x0x13"]
 [ext_resource type="Script" path="res://microjogos/2024S1/projeto_felipe_onorio/cenas/row.gd" id="20_n1n8m"]
 [ext_resource type="Script" path="res://microjogos/2024S1/projeto_felipe_onorio/cenas/the_test_button.gd" id="23_dofep"]
 
@@ -35,17 +36,26 @@ width = 128
 color_ramp = SubResource("Gradient_n40rd")
 noise = SubResource("FastNoiseLite_m7mfj")
 
-[sub_resource type="CanvasTexture" id="CanvasTexture_eo2l5"]
-diffuse_texture = ExtResource("12_ervd2")
+[sub_resource type="Gradient" id="Gradient_ycyuc"]
+offsets = PackedFloat32Array(0.394309, 0.51626, 0.686992, 0.760163)
+colors = PackedColorArray(1, 0.25098, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_hemmq"]
+gradient = SubResource("Gradient_ycyuc")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
 
 [sub_resource type="Curve" id="Curve_wm11p"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 2
+_data = [Vector2(0.0070922, 0.652457), 0.0, 0.0, 0, 0, Vector2(0.592199, 0.502168), 0.0, 0.0, 0, 0, Vector2(1, 0.182803), 0.0, 0.0, 0, 0]
+point_count = 3
 
 [sub_resource type="Gradient" id="Gradient_of1jo"]
 colors = PackedColorArray(1, 0, 0, 1, 1, 1, 0, 1)
 
 [sub_resource type="Gradient" id="Gradient_vok31"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_eo2l5"]
+diffuse_texture = ExtResource("12_ervd2")
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_1yj3m")
@@ -190,6 +200,28 @@ scale = Vector2(3, 3)
 speed_scale = 4.0
 script = ExtResource("17_y5pjc")
 
+[node name="destroyed_animation" type="CPUParticles2D" parent="status_checker/area_cell_0"]
+z_index = 2
+position = Vector2(-4, 0)
+emitting = false
+amount = 15
+one_shot = true
+speed_scale = 2.33
+explosiveness = 1.0
+texture = SubResource("GradientTexture2D_hemmq")
+emission_shape = 2
+emission_sphere_radius = 0.01
+direction = Vector2(0, 0)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 96.35
+initial_velocity_max = 155.95
+scale_amount_curve = SubResource("Curve_wm11p")
+color = Color(0.87451, 1, 0.32549, 1)
+color_ramp = SubResource("Gradient_of1jo")
+color_initial_ramp = SubResource("Gradient_vok31")
+script = ExtResource("19_x0x13")
+
 [node name="area_cell_1" type="Area2D" parent="status_checker" node_paths=PackedStringArray("right_neighbor", "left_neighbor", "down_neighbor")]
 position = Vector2(915, 421)
 script = ExtResource("5_n4jon")
@@ -219,6 +251,28 @@ scale = Vector2(3, 3)
 speed_scale = 4.0
 script = ExtResource("17_y5pjc")
 
+[node name="destroyed_animation" type="CPUParticles2D" parent="status_checker/area_cell_1"]
+z_index = 2
+position = Vector2(-4, 0)
+emitting = false
+amount = 15
+one_shot = true
+speed_scale = 2.33
+explosiveness = 1.0
+texture = SubResource("GradientTexture2D_hemmq")
+emission_shape = 2
+emission_sphere_radius = 0.01
+direction = Vector2(0, 0)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 96.35
+initial_velocity_max = 155.95
+scale_amount_curve = SubResource("Curve_wm11p")
+color = Color(0.87451, 1, 0.32549, 1)
+color_ramp = SubResource("Gradient_of1jo")
+color_initial_ramp = SubResource("Gradient_vok31")
+script = ExtResource("19_x0x13")
+
 [node name="area_cell_2" type="Area2D" parent="status_checker" node_paths=PackedStringArray("left_neighbor", "down_neighbor")]
 position = Vector2(1097, 421)
 script = ExtResource("5_n4jon")
@@ -244,6 +298,28 @@ position = Vector2(150, -150)
 scale = Vector2(3, 3)
 speed_scale = 4.0
 script = ExtResource("17_y5pjc")
+
+[node name="destroyed_animation" type="CPUParticles2D" parent="status_checker/area_cell_2"]
+z_index = 2
+position = Vector2(-4, 0)
+emitting = false
+amount = 15
+one_shot = true
+speed_scale = 2.33
+explosiveness = 1.0
+texture = SubResource("GradientTexture2D_hemmq")
+emission_shape = 2
+emission_sphere_radius = 0.01
+direction = Vector2(0, 0)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 96.35
+initial_velocity_max = 155.95
+scale_amount_curve = SubResource("Curve_wm11p")
+color = Color(0.87451, 1, 0.32549, 1)
+color_ramp = SubResource("Gradient_of1jo")
+color_initial_ramp = SubResource("Gradient_vok31")
+script = ExtResource("19_x0x13")
 
 [node name="area_cell_3" type="Area2D" parent="status_checker" node_paths=PackedStringArray("right_neighbor", "up_neighbor", "down_neighbor")]
 position = Vector2(726, 613)
@@ -272,6 +348,28 @@ position = Vector2(-150, 0)
 scale = Vector2(3, 3)
 speed_scale = 4.0
 script = ExtResource("17_y5pjc")
+
+[node name="destroyed_animation" type="CPUParticles2D" parent="status_checker/area_cell_3"]
+z_index = 2
+position = Vector2(-4, 0)
+emitting = false
+amount = 15
+one_shot = true
+speed_scale = 2.33
+explosiveness = 1.0
+texture = SubResource("GradientTexture2D_hemmq")
+emission_shape = 2
+emission_sphere_radius = 0.01
+direction = Vector2(0, 0)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 96.35
+initial_velocity_max = 155.95
+scale_amount_curve = SubResource("Curve_wm11p")
+color = Color(0.87451, 1, 0.32549, 1)
+color_ramp = SubResource("Gradient_of1jo")
+color_initial_ramp = SubResource("Gradient_vok31")
+script = ExtResource("19_x0x13")
 
 [node name="area_cell_4" type="Area2D" parent="status_checker" node_paths=PackedStringArray("right_neighbor", "left_neighbor", "up_neighbor", "down_neighbor")]
 position = Vector2(917, 610)
@@ -303,6 +401,28 @@ scale = Vector2(3, 3)
 speed_scale = 4.0
 script = ExtResource("17_y5pjc")
 
+[node name="destroyed_animation" type="CPUParticles2D" parent="status_checker/area_cell_4"]
+z_index = 2
+position = Vector2(-4, 0)
+emitting = false
+amount = 15
+one_shot = true
+speed_scale = 2.33
+explosiveness = 1.0
+texture = SubResource("GradientTexture2D_hemmq")
+emission_shape = 2
+emission_sphere_radius = 0.01
+direction = Vector2(0, 0)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 96.35
+initial_velocity_max = 155.95
+scale_amount_curve = SubResource("Curve_wm11p")
+color = Color(0.87451, 1, 0.32549, 1)
+color_ramp = SubResource("Gradient_of1jo")
+color_initial_ramp = SubResource("Gradient_vok31")
+script = ExtResource("19_x0x13")
+
 [node name="area_cell_5" type="Area2D" parent="status_checker" node_paths=PackedStringArray("left_neighbor", "up_neighbor", "down_neighbor")]
 position = Vector2(1099, 610)
 script = ExtResource("5_n4jon")
@@ -332,6 +452,28 @@ scale = Vector2(3, 3)
 speed_scale = 4.0
 script = ExtResource("17_y5pjc")
 
+[node name="destroyed_animation" type="CPUParticles2D" parent="status_checker/area_cell_5"]
+z_index = 2
+position = Vector2(-4, 0)
+emitting = false
+amount = 15
+one_shot = true
+speed_scale = 2.33
+explosiveness = 1.0
+texture = SubResource("GradientTexture2D_hemmq")
+emission_shape = 2
+emission_sphere_radius = 0.01
+direction = Vector2(0, 0)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 96.35
+initial_velocity_max = 155.95
+scale_amount_curve = SubResource("Curve_wm11p")
+color = Color(0.87451, 1, 0.32549, 1)
+color_ramp = SubResource("Gradient_of1jo")
+color_initial_ramp = SubResource("Gradient_vok31")
+script = ExtResource("19_x0x13")
+
 [node name="area_cell_6" type="Area2D" parent="status_checker" node_paths=PackedStringArray("right_neighbor", "up_neighbor")]
 position = Vector2(728, 802)
 script = ExtResource("5_n4jon")
@@ -359,6 +501,28 @@ position = Vector2(-150, 150)
 scale = Vector2(3, 3)
 speed_scale = 4.0
 script = ExtResource("17_y5pjc")
+
+[node name="destroyed_animation" type="CPUParticles2D" parent="status_checker/area_cell_6"]
+z_index = 2
+position = Vector2(-4, 0)
+emitting = false
+amount = 15
+one_shot = true
+speed_scale = 2.33
+explosiveness = 1.0
+texture = SubResource("GradientTexture2D_hemmq")
+emission_shape = 2
+emission_sphere_radius = 0.01
+direction = Vector2(0, 0)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 96.35
+initial_velocity_max = 155.95
+scale_amount_curve = SubResource("Curve_wm11p")
+color = Color(0.87451, 1, 0.32549, 1)
+color_ramp = SubResource("Gradient_of1jo")
+color_initial_ramp = SubResource("Gradient_vok31")
+script = ExtResource("19_x0x13")
 
 [node name="area_cell_7" type="Area2D" parent="status_checker" node_paths=PackedStringArray("right_neighbor", "left_neighbor", "up_neighbor")]
 position = Vector2(919, 799)
@@ -388,6 +552,28 @@ scale = Vector2(3, 3)
 speed_scale = 4.0
 script = ExtResource("17_y5pjc")
 
+[node name="destroyed_animation" type="CPUParticles2D" parent="status_checker/area_cell_7"]
+z_index = 2
+position = Vector2(-4, 0)
+emitting = false
+amount = 15
+one_shot = true
+speed_scale = 2.33
+explosiveness = 1.0
+texture = SubResource("GradientTexture2D_hemmq")
+emission_shape = 2
+emission_sphere_radius = 0.01
+direction = Vector2(0, 0)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 96.35
+initial_velocity_max = 155.95
+scale_amount_curve = SubResource("Curve_wm11p")
+color = Color(0.87451, 1, 0.32549, 1)
+color_ramp = SubResource("Gradient_of1jo")
+color_initial_ramp = SubResource("Gradient_vok31")
+script = ExtResource("19_x0x13")
+
 [node name="area_cell_8" type="Area2D" parent="status_checker" node_paths=PackedStringArray("left_neighbor", "up_neighbor")]
 position = Vector2(1101, 799)
 script = ExtResource("5_n4jon")
@@ -415,6 +601,28 @@ position = Vector2(150, 150)
 scale = Vector2(3, 3)
 speed_scale = 4.0
 script = ExtResource("17_y5pjc")
+
+[node name="destroyed_animation" type="CPUParticles2D" parent="status_checker/area_cell_8"]
+z_index = 2
+position = Vector2(-4, 0)
+emitting = false
+amount = 15
+one_shot = true
+speed_scale = 2.33
+explosiveness = 1.0
+texture = SubResource("GradientTexture2D_hemmq")
+emission_shape = 2
+emission_sphere_radius = 0.01
+direction = Vector2(0, 0)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 96.35
+initial_velocity_max = 155.95
+scale_amount_curve = SubResource("Curve_wm11p")
+color = Color(0.87451, 1, 0.32549, 1)
+color_ramp = SubResource("Gradient_of1jo")
+color_initial_ramp = SubResource("Gradient_vok31")
+script = ExtResource("19_x0x13")
 
 [node name="row_0" type="Sprite2D" parent="status_checker" node_paths=PackedStringArray("cells")]
 script = ExtResource("20_n1n8m")
@@ -490,6 +698,29 @@ scale = Vector2(4.78125, 4.78125)
 texture_normal = ExtResource("11_v661f")
 texture_pressed = ExtResource("12_ervd2")
 script = ExtResource("23_dofep")
+
+[node name="destroyed_animation_gpu" type="GPUParticles2D" parent="."]
+position = Vector2(2097, 510)
+
+[node name="destroyed_animation" type="CPUParticles2D" parent="."]
+visible = false
+z_index = 2
+position = Vector2(-4, 0)
+amount = 15
+speed_scale = 2.33
+explosiveness = 1.0
+texture = SubResource("GradientTexture2D_hemmq")
+emission_shape = 2
+emission_sphere_radius = 0.01
+direction = Vector2(0, 0)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 96.35
+initial_velocity_max = 155.95
+scale_amount_curve = SubResource("Curve_wm11p")
+color = Color(0.87451, 1, 0.32549, 1)
+color_ramp = SubResource("Gradient_of1jo")
+color_initial_ramp = SubResource("Gradient_vok31")
 
 [connection signal="down_pressed" from="." to="cursor_area" method="_on_main_down_pressed"]
 [connection signal="finished" from="interface_static_elements/audio_stream_player" to="interface_static_elements/audio_stream_player" method="_on_finished"]

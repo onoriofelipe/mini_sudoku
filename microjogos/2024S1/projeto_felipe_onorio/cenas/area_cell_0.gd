@@ -9,6 +9,7 @@ extends Area2D
 
 var marked_for_destruction: bool = false
 
+signal play_destruction_animation()
 signal cell_popped(state: State)
 
 enum State {EMPTY, FIRST, SECOND, THIRD }
@@ -47,6 +48,7 @@ func update():
 func _ready():
 	#cursor_area.row_and_column_complete.connect(self.maybe_destroy_self)
 	cell_popped.connect(score_label.accumulate_state)
+	play_destruction_animation.connect($destroyed_animation.on_play_destroyed_animation)
 	pass
 
 # TODO: change for handling from row node notification
@@ -79,6 +81,7 @@ func mark_for_destruction():
 func get_next():
 	last_state = state
 	# play_destruction_animation_shader_or_vfx()
+	play_destruction_animation.emit()
 	state = next_display.pop_next()
 	update()
 	pass
